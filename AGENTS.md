@@ -1,4 +1,4 @@
-# Ritmo: reglas para ChatGPT y agentes que actualizan este repositorio
+# Running + Gym: reglas para ChatGPT y agentes que actualizan este repositorio
 
 El usuario carga sesiones enviando un TCX de Zepp y comentarios desde ChatGPT, normalmente en el celular. Su objetivo es no tocar código. Ejecutar las actualizaciones disponibles; no limitarse a dar instrucciones de programación.
 
@@ -18,11 +18,11 @@ El usuario carga sesiones enviando un TCX de Zepp y comentarios desde ChatGPT, n
 - Distancia: suma de DistanceMeters de los Lap del TCX calibrado. Respetar calibración previa de Zepp. Si hay dudas del formato, detener la interpretación del campo y revisarlo.
 - FC/cadencia/curvas: TCX. Preservar resúmenes informados cuando faltan campos en el TCX; no etiquetarlos falsamente como mediciones importadas.
 - Cadencia: comprobar unidades de Zepp antes de pasar --cadence-factor 1 (pasos/min) o 2 (ciclos/min). Mantener valor crudo. No adivinar la unidad por el número. Cadence de ciclismo no equivale necesariamente a running.
-- Zancada: aquí strideM significa metros por paso. El importador conservador deja null si no hay un campo con unidad verificada; si el TCX lo incluye, adaptar el importador con pruebas. No inventar curva ni derivar de promedios.
+- Mostrar solo métricas presentes y verificadas en los archivos recibidos. Mantener ocultas las métricas sin datos reales.
 - durationSec es tiempo de running del resumen. elapsedSec incluye el eje temporal real y pausas; puede ser mayor. Gráficos: eje desde 0 hasta elapsedSec, preservar SIEMPRE la última muestra exacta al reducir cada 5–10 s. No recortar con un redondeo al múltiplo de 5. No extender valores inventados: ausencia final = null y nota.
 - session.totalDurationSec comprende toda la sesión, NO sumar running otra vez. gymDurationSec solo cuando informado explícitamente; el resto del total puede incluir pausas, transiciones o vestuario.
 - “Cumplí con las medidas”: aplicar data.reference: inclinación 0,5 %, km 1 a 10,5; km 2 a 11; km 3 a 11,5 km/h. No asumir velocidad de distancia adicional. No cambiar la referencia o meta automáticamente.
-- No convertir variaciones pequeñas de FC/cadencia/zancada en mejoras fisiológicas. Incluir calor, fatiga, sensación y cambios de carga. Meta: 3 km en 15:00 / 12 km/h sostenidos, no un pico instantáneo.
+- No convertir variaciones pequeñas de FC o cadencia en mejoras fisiológicas. Incluir calor, fatiga, sensación y cambios de carga. Meta: 3 km en 15:00 / 12 km/h sostenidos, no un pico instantáneo.
 - No guardar TCX crudos con GPS u otros metadatos personales por defecto. Se extraen solo los campos necesarios. Nunca poner credenciales en JS, JSON ni commits.
 
 ## Contexto para el importador

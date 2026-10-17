@@ -150,7 +150,6 @@ def parse_tcx(raw, cadence_factor=None):
         warnings.append('El final declarado no tiene muestra; se conserva un punto nulo en el extremo.')
     if cadence_factor is None:
         warnings.append('Cadencia sin convertir: confirmar si el TCX usa pasos o ciclos por minuto.')
-    warnings.append('Zancada pendiente: no se deriva de velocidad/cadencia ni se asumen unidades de extensiones.')
     hr_values = [(bpm(l,'AverageHeartRateBpm'),number(l,'TotalTimeSeconds')) for l in laps]
     has_hr_summary = all(v is not None for v,t in hr_values)
     average = sum(v*t for v,t in hr_values)/duration if has_hr_summary else observed_average(samples,'heartRate')

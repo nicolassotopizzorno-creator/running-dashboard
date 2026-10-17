@@ -1,4 +1,4 @@
-# RITMO · Running + gym
+# Running + Gym
 
 Dashboard personal mobile-first, sin dependencias ni instalación. HTML, CSS, JS modular y `data/workouts.json` como única fuente de datos. Objetivo: 3 km en 15:00 a 12 km/h sostenidos.
 
@@ -15,12 +15,12 @@ No necesitás editar código. La escritura directa depende de que esa sesión de
 ## Incluye
 
 - Cuatro indicadores en una fila incluso a 320 px.
-- Evolución por fecha: rango informado de velocidad de cinta, FC media, cadencia y longitud de paso; meta de 12 km/h.
+- Evolución por fecha: rango informado de velocidad de cinta, FC media y cadencia; meta de 12 km/h.
 - Tiempo de sesión con estados explícitos de datos pendientes.
 - Comparación entre las últimas dos corridas con contexto, sin diagnósticos automáticos.
-- Referencia y detalle diario inicialmente plegados. Cuatro curvas con eje completo cuando se importan TCX.
+- Referencia y detalle diario inicialmente plegados. Curvas de ritmo, FC y cadencia con eje completo de los TCX.
 - Importador Python conservador, sin dependencias; última muestra y duración real preservadas.
-- Historial inicial del 16 y 17/10/2026. Las curvas y la zancada están pendientes de TCX; duración total del 17/10 pendiente.
+- Historial del 16 y 17/10/2026 con los TCX incorporados y las duraciones totales informadas.
 
 ## Estructura
 
@@ -39,8 +39,8 @@ El servidor imprime su URL local; no es accesible desde el celular. La URL de Gi
 
 ## Modelo de datos
 
-Todas las duraciones en segundos, distancia en km, FC en lpm, cadencia en pasos/min, longitud de paso en metros/paso. Fechas locales ISO. Un ID por sesión; puede haber varias el mismo día. Nulos indican pendientes. `samples` contiene objetos `{t, paceSecKm, heartRate, cadence, strideM}`; `t` es tiempo transcurrido en segundos desde inicio real.
+Todas las duraciones en segundos, distancia en km, FC en lpm y cadencia en pasos/min. Fechas locales ISO. Un ID por sesión; puede haber varias el mismo día. Nulos indican pendientes. Las muestras de cada TCX se guardan en `data/samples/`; `t` es tiempo transcurrido en segundos desde el inicio real.
 
-Los rangos de cinta son los extremos informados, no medias. El mejor ritmo es el menor `durationSec / distanceKm` de una sesión completa; no implica haber logrado la meta 3K. Las sesiones iniciales fueron informadas por el usuario a partir del reloj; no se recibieron todavía los TCX originales. No hay curvas simuladas.
+Los rangos de cinta son los extremos informados, no medias. El mejor ritmo es el menor `durationSec / distanceKm` de una sesión completa; no implica haber logrado la meta 3K. Las curvas provienen de muestras reales de los TCX.
 
 La publicación estática expone el JSON a quien pueda acceder al sitio. No existe login implementado en esta web. La visibilidad del repositorio y la de Pages deben elegirse conscientemente; un repositorio privado no garantiza un Pages privado.

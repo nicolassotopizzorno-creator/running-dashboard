@@ -2,37 +2,37 @@
 <html lang="es-AR">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101114">
+  <meta name="theme-color" content="#0e1723">
   <meta name="description" content="Tu evolución de running y gimnasio, sesión a sesión.">
-  <title>Ritmo · Running + gym</title>
+  <title>Running + Gym · Dashboard</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
-  <script type="module" src="app.js?v=20261017-3"></script>
+  <script type="module" src="app.js?v=20261017-4"></script>
 </head>
 <body>
  <main>
-  <header><a class="brand" href="./" aria-label="Ritmo inicio"><span class="brand-icon">↗</span> RITMO<span class="brand-sub">RUNNING + GYM</span></a><span class="live"><i></i> MI ENTRENAMIENTO</span></header>
-  <section class="intro"><div><p class="eyebrow">CADA SESIÓN CUENTA</p><h1>Tu esfuerzo.<br><span>En perspectiva.</span></h1><p class="subtitle">Un registro real de cómo venís entrenando.</p></div><div class="goal-art" aria-hidden="true"><span>OBJETIVO</span><strong>3<span>K</span></strong><small>15:00 <b>↗</b></small></div></section>
+  <header><a class="brand" href="./" aria-label="Running + Gym, inicio"><span class="brand-mark" aria-hidden="true"></span>Running + Gym</a><span class="header-note">MI ENTRENAMIENTO</span></header>
+  <section class="intro"><h1>Resumen de entrenamiento</h1><p class="subtitle">Tu evolución en running y gimnasio, sesión a sesión.</p></section>
   <div id="status" role="status">Cargando entrenamientos…</div>
   <section class="stats" aria-label="Indicadores principales">
    <div><span>Sesiones</span><strong id="sessions">—</strong><small>registradas</small></div>
    <div><span>Km totales</span><strong id="distance">—</strong><small>acumulados</small></div>
    <div><span>Mejor ritmo</span><strong id="pace">—</strong><small>min/km · media</small></div>
-   <div class="goal-stat"><span>Meta 3K</span><strong>15:00</strong><small>12 km/h</small></div>
+   <div class="goal-stat"><span>Meta 3K</span><strong>15:00</strong><small>12 km/h sostenidos</small></div>
   </section>
   <section class="chart-grid">
-   <article class="panel"><div class="panel-heading"><div><p class="eyebrow">EL RECORRIDO</p><h2>Evolución running</h2></div><span class="mini-icon orange">↗</span></div>
+   <article class="panel"><div class="panel-heading"><div><p class="eyebrow">EVOLUCIÓN</p><h2>Evolución running</h2></div><span class="mini-icon accent" aria-hidden="true">↗</span></div>
     <div class="tabs" role="group" aria-label="Métrica de evolución"><button data-metric="speed" aria-pressed="true">Velocidad</button><button data-metric="heartRate" aria-pressed="false">FC</button><button data-metric="cadence" aria-pressed="false">Cadencia</button></div>
     <div id="evolution" class="chart"></div><p id="evolution-note" class="chart-note"></p>
    </article>
-   <article class="panel"><div class="panel-heading"><div><p class="eyebrow">TIEMPO DEDICADO</p><h2>Tiempo total de sesión</h2></div><span class="mini-icon purple">◷</span></div>
-    <div class="legend"><span><i class="orange-dot"></i> Running</span><span><i class="purple-dot"></i> Gimnasio / resto</span></div>
+   <article class="panel"><div class="panel-heading"><div><p class="eyebrow">TIEMPO DEDICADO</p><h2>Tiempo total de sesión</h2></div><span class="mini-icon secondary" aria-hidden="true">◷</span></div>
+    <div class="legend"><span><i class="run-dot"></i> Running</span><span><i class="gym-dot"></i> Gimnasio / resto</span></div>
     <div id="duration" class="chart"></div><p class="chart-note">Total completo cuando está informado. Los tiempos pendientes no se cuentan como cero.</p>
    </article>
   </section>
   <section class="panel comparison"><div class="panel-heading"><div><p class="eyebrow">CAMBIOS, CON CONTEXTO</p><h2>Última sesión <span class="muted">vs anterior</span></h2></div><span id="compare-dates" class="badge"></span></div><div id="comparison" class="comparison-grid"></div><p id="context" class="context"></p></section>
-  <details class="disclosure" id="reference"><summary><span><span class="small-orange">◎</span> Sesión de referencia <small>· “cumplí con las medidas”</small></span><span class="chevron">+</span></summary><div class="disclosure-body" id="reference-content"></div></details>
-  <details class="disclosure day-details"><summary><span><span class="small-orange">≡</span> Detalle por día <small>· explorá cada entrenamiento</small></span><span class="chevron">+</span></summary><div class="disclosure-body"><div class="day-heading"><div><p class="eyebrow">TU REGISTRO</p><h2 id="day-title"></h2></div><label>Elegí una sesión<select id="date-select"></select></label></div><div id="day-summary"></div><div id="day-charts" class="detail-charts"></div><div id="day-context"></div></div></details>
-  <footer><span>RITMO <b> / </b> Un entrenamiento a la vez.</span><span>Datos de cinta + reloj · <span id="updated"></span></span></footer>
+  <details class="disclosure" id="reference"><summary><span><span class="small-accent">◎</span> Sesión de referencia <small>· “cumplí con las medidas”</small></span><span class="chevron">+</span></summary><div class="disclosure-body" id="reference-content"></div></details>
+  <details class="disclosure day-details"><summary><span><span class="small-accent">≡</span> Detalle por día <small>· explorá cada entrenamiento</small></span><span class="chevron">+</span></summary><div class="disclosure-body"><div class="day-heading"><div><p class="eyebrow">TU REGISTRO</p><h2 id="day-title"></h2></div><label>Elegí una sesión<select id="date-select"></select></label></div><div id="day-summary"></div><div id="day-charts" class="detail-charts"></div><div id="day-context"></div></div></details>
+  <footer><span>Running + Gym</span><span>Datos de cinta + reloj · <span id="updated"></span></span></footer>
  </main>
 </body>
 </html>

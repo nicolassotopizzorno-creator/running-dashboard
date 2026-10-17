@@ -58,9 +58,7 @@
         "samplesFile": "data/samples/2026-10-16-01.json",
         "lastRecordedSampleSec": 1071,
         "tcxSha256": "7fe11c7905d2e63d6cb03eb7e875d3d8918fcd73102db4b6ad87df3a7dd4e7ad",
-        "importWarnings": [
-          "Zancada pendiente: el TCX de Zepp no exporta un campo de longitud de paso verificable."
-        ]
+        "importWarnings": []
       },
       "session": {
         "totalDurationSec": 5400,
@@ -71,7 +69,7 @@
       "context": {
         "temperature": "Mucho calor en el gimnasio",
         "sensations": "No informadas",
-        "notes": "Datos resumidos por el usuario. TCX incorporado: curvas de ritmo, FC y cadencia disponibles. Zancada no exportada por Zepp."
+        "notes": "Datos resumidos por el usuario. TCX incorporado: curvas de ritmo, FC y cadencia disponibles."
       }
     },
     {
@@ -120,9 +118,7 @@
         "samplesFile": "data/samples/2026-10-17-01.json",
         "lastRecordedSampleSec": 1048,
         "tcxSha256": "aa8dc0e88a1c57a4cbf23975b7bc6ba93192fc7e6b7a465e5d73a170a031b790",
-        "importWarnings": [
-          "Zancada pendiente: el TCX de Zepp no exporta un campo de longitud de paso verificable."
-        ]
+        "importWarnings": []
       },
       "session": {
         "totalDurationSec": 7200,
@@ -133,7 +129,7 @@
       "context": {
         "temperature": "Gimnasio más fresco que el día anterior",
         "sensations": "Mejores sensaciones",
-        "notes": "Sesión de referencia. Duración total informada: 12:00 a 14:00. TCX incorporado: curvas de ritmo, FC y cadencia disponibles. Zancada no exportada por Zepp."
+        "notes": "Sesión de referencia. Duración total informada: 12:00 a 14:00. TCX incorporado: curvas de ritmo, FC y cadencia disponibles."
       }
     }
   ]
