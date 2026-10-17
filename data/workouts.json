@@ -1,10 +1,124 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-17",
-  "goal": {"distanceKm": 3, "durationSec": 900, "speedKmh": 12},
-  "reference": {"workoutId": "2026-10-17-01", "inclinePct": 0.5, "segments": [{"fromKm": 0, "toKm": 1, "speedKmh": 10.5}, {"fromKm": 1, "toKm": 2, "speedKmh": 11}, {"fromKm": 2, "toKm": 3, "speedKmh": 11.5}]},
+  "goal": {
+    "distanceKm": 3,
+    "durationSec": 900,
+    "speedKmh": 12
+  },
+  "reference": {
+    "workoutId": "2026-10-17-01",
+    "inclinePct": 0.5,
+    "segments": [
+      {
+        "fromKm": 0,
+        "toKm": 1,
+        "speedKmh": 10.5
+      },
+      {
+        "fromKm": 1,
+        "toKm": 2,
+        "speedKmh": 11
+      },
+      {
+        "fromKm": 2,
+        "toKm": 3,
+        "speedKmh": 11.5
+      }
+    ]
+  },
   "workouts": [
-    {"id":"2026-10-16-01","date":"2026-10-16","type":"running_gym","source":"user_report","running":{"distanceKm":3.1,"durationSec":1072,"elapsedSec":1072,"distanceSource":"user_report_calibrated_tcx","heartRateAvg":173,"heartRateMax":189,"cadenceAvg":143,"cadenceApproximate":true,"strideAvgM":null,"treadmill":{"inclinePct":0.5,"speedMinKmh":10,"speedMaxKmh":10.8,"averageSpeedKmh":null,"approximate":true,"notes":"Casi toda la corrida a 10 km/h; final alrededor de 10,8 km/h.","segments":[]},"samples":[]},"session":{"totalDurationSec":5400,"gymDurationSec":null,"startLocal":"20:10","endLocal":"21:40"},"context":{"temperature":"Mucho calor en el gimnasio","sensations":"No informadas","notes":"Datos resumidos por el usuario. TCX pendiente para incorporar curvas."}},
-    {"id":"2026-10-17-01","date":"2026-10-17","type":"running_gym","source":"user_report","running":{"distanceKm":3.16,"durationSec":1048,"elapsedSec":1048,"distanceSource":"user_report_calibrated_tcx","heartRateAvg":171,"heartRateMax":185,"cadenceAvg":144,"cadenceApproximate":true,"strideAvgM":null,"treadmill":{"inclinePct":0.5,"speedMinKmh":10.5,"speedMaxKmh":11.5,"averageSpeedKmh":null,"approximate":false,"notes":"Km 1 a 10,5; km 2 a 11; km 3 a 11,5 km/h. Velocidad de los 160 m restantes no informada.","segments":[{"fromKm":0,"toKm":1,"speedKmh":10.5},{"fromKm":1,"toKm":2,"speedKmh":11},{"fromKm":2,"toKm":3,"speedKmh":11.5}]},"samples":[]},"session":{"totalDurationSec":null,"gymDurationSec":null,"startLocal":null,"endLocal":null},"context":{"temperature":"Gimnasio más fresco que el día anterior","sensations":"Mejores sensaciones","notes":"Sesión de referencia. Duración total pendiente. TCX pendiente para incorporar curvas."}}
+    {
+      "id": "2026-10-16-01",
+      "date": "2026-10-16",
+      "type": "running_gym",
+      "source": "user_report",
+      "running": {
+        "distanceKm": 3.1,
+        "durationSec": 1072,
+        "elapsedSec": 1072,
+        "distanceSource": "user_report_calibrated_tcx",
+        "heartRateAvg": 173,
+        "heartRateMax": 189,
+        "cadenceAvg": 143,
+        "cadenceApproximate": true,
+        "strideAvgM": null,
+        "treadmill": {
+          "inclinePct": 0.5,
+          "speedMinKmh": 10,
+          "speedMaxKmh": 10.8,
+          "averageSpeedKmh": null,
+          "approximate": true,
+          "notes": "Casi toda la corrida a 10 km/h; final alrededor de 10,8 km/h.",
+          "segments": []
+        },
+        "samples": []
+      },
+      "session": {
+        "totalDurationSec": 5400,
+        "gymDurationSec": null,
+        "startLocal": "20:10",
+        "endLocal": "21:40"
+      },
+      "context": {
+        "temperature": "Mucho calor en el gimnasio",
+        "sensations": "No informadas",
+        "notes": "Datos resumidos por el usuario. TCX pendiente para incorporar curvas."
+      }
+    },
+    {
+      "id": "2026-10-17-01",
+      "date": "2026-10-17",
+      "type": "running_gym",
+      "source": "user_report",
+      "running": {
+        "distanceKm": 3.16,
+        "durationSec": 1048,
+        "elapsedSec": 1048,
+        "distanceSource": "user_report_calibrated_tcx",
+        "heartRateAvg": 171,
+        "heartRateMax": 185,
+        "cadenceAvg": 144,
+        "cadenceApproximate": true,
+        "strideAvgM": null,
+        "treadmill": {
+          "inclinePct": 0.5,
+          "speedMinKmh": 10.5,
+          "speedMaxKmh": 11.5,
+          "averageSpeedKmh": null,
+          "approximate": false,
+          "notes": "Km 1 a 10,5; km 2 a 11; km 3 a 11,5 km/h. Velocidad de los 160 m restantes no informada.",
+          "segments": [
+            {
+              "fromKm": 0,
+              "toKm": 1,
+              "speedKmh": 10.5
+            },
+            {
+              "fromKm": 1,
+              "toKm": 2,
+              "speedKmh": 11
+            },
+            {
+              "fromKm": 2,
+              "toKm": 3,
+              "speedKmh": 11.5
+            }
+          ]
+        },
+        "samples": []
+      },
+      "session": {
+        "totalDurationSec": 7200,
+        "gymDurationSec": null,
+        "startLocal": "12:00",
+        "endLocal": "14:00"
+      },
+      "context": {
+        "temperature": "Gimnasio más fresco que el día anterior",
+        "sensations": "Mejores sensaciones",
+        "notes": "Sesión de referencia. Duración total informada: 12:00 a 14:00. TCX pendiente para incorporar curvas."
+      }
+    }
   ]
 }
