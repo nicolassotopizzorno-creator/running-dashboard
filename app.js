@@ -51,11 +51,31 @@ function comparison(){
  $('#comparison').innerHTML=delta('Cinta · extremo superior',ar?.speedMaxKmh,br?.speedMaxKmh,'km/h','faster',1)+delta('Frecuencia cardíaca media',a.heartRateAvg,b.heartRateAvg,'lpm')+delta('Cadencia media'+(a.cadenceApproximate||b.cadenceApproximate?' ≈':''),a.cadenceAvg,b.cadenceAvg,'spm','change')+delta('Longitud de paso',a.strideAvgM,b.strideAvgM,'m','change',2);
  $('#context').textContent=`${shortDate(prev.date)}: ${prev.context?.temperature??'temperatura no informada'}. ${shortDate(current.date)}: ${current.context?.temperature??'temperatura no informada'}; ${current.context?.sensations??'sensaciones no informadas'}. Los cambios describen estas sesiones; por sí solos no demuestran una mejora fisiológica. El extremo superior de cinta no equivale a velocidad sostenida.`;
 }
-function detail(id){const w=workouts.find(w=>w.id===id);if(!w)return;$('#day-title').textContent=fullDate(w.date);const r=w.running;
+const sampleCache=new Map();
+async function loadSamples(w){
+ const inline=w.running?.samples??[];
+ if(inline.length) return inline;
+ const path=w.running?.samplesFile;
+ if(!path) return [];
+ if(sampleCache.has(path)) return sampleCache.get(path);
+ try{
+  const res=await fetch('./'+path,{cache:'no-store'});
+  if(!res.ok) throw new Error('No se pudieron cargar las curvas.');
+  const payload=await res.json();
+  const fields=payload.fields??[];
+  const rows=payload.samples??[];
+  const samples=rows.map(row=>Object.fromEntries(fields.map((f,i)=>[f,row[i]])));
+  sampleCache.set(path,samples); return samples;
+ }catch(e){
+  console.warn(e); return [];
+ }
+}
+async function detail(id){const w=workouts.find(w=>w.id===id);if(!w)return;$('#day-title').textContent=fullDate(w.date);const r=w.running;
  const fact=(name,value)=>`<div><small>${esc(name)}</small><strong>${esc(value)}</strong></div>`;
  $('#day-summary').innerHTML=`<span class="badge">${types[w.type]} · ${w.source==='tcx'?'TCX + contexto':'Resumen informado · TCX pendiente'}</span><div class="day-facts">${r?fact('Distancia calibrada',num(r.distanceKm,2)+' km')+fact('Tiempo running',clock(r.durationSec))+fact('Ritmo medio',clock(pace(r))+' /km')+fact('Inclinación cinta',finite(r.treadmill?.inclinePct)?num(r.treadmill.inclinePct)+' %':'Pendiente')+fact('FC media / máxima',`${num(r.heartRateAvg,0)} / ${num(r.heartRateMax,0)} lpm`)+fact('Cadencia media',(r.cadenceApproximate?'≈ ':'')+num(r.cadenceAvg,0)+' spm'):''}${fact('Total de sesión',duration(sessionTotal(w)))}${fact('Gimnasio (por separado)',duration(w.session?.gymDurationSec))}</div>`;
  const charts=[['Ritmo','paceSecKm','min/km','#ff8055'],['Frecuencia cardíaca','heartRate','lpm','#75c8f5'],['Cadencia','cadence','spm','#b29aff'],['Longitud de paso','strideM','m/paso','#b2e987']];
- $('#day-charts').innerHTML=r?charts.map(([title,key,unit,color])=>{const end=r.elapsedSec??r.durationSec,points=(r.samples??[]).map(s=>({x:s.t,y:s[key]})),valid=points.some(p=>finite(p.y));const ticks=[0,end/2,end].map(x=>({x,label:clock(x)}));return `<article class="detail-chart"><h3>${title}</h3><div class="chart">${valid?lineChart({points,xMax:end,xTicks:ticks,unit,color,time:true,yFormat:key==='paceSecKm'?clock:null}):empty('Sin curva disponible · esperando datos del TCX')}</div><p class="chart-note">${valid?'Eje completo: 0:00 → '+clock(end)+'. Los huecos son datos ausentes.':'Se incorporará la curva real, sin recrearla desde promedios.'}</p></article>`;}).join(''):'';
+ const samples=r?await loadSamples(w):[];
+ $('#day-charts').innerHTML=r?charts.map(([title,key,unit,color])=>{const end=r.elapsedSec??r.durationSec;let points=samples.map(s=>({x:s.t,y:s[key]}));if(key==='paceSecKm')points=points.map(p=>({...p,y:finite(p.y)&&p.y<=900?p.y:null}));const valid=points.some(p=>finite(p.y));const ticks=[0,end/2,end].map(x=>({x,label:clock(x)}));const unavailable=key==='strideM'?'Zepp no exporta zancada en este TCX':'Sin curva disponible';return `<article class="detail-chart"><h3>${title}</h3><div class="chart">${valid?lineChart({points,xMax:end,xTicks:ticks,unit,color,time:true,yFormat:key==='paceSecKm'?clock:null}):empty(unavailable)}</div><p class="chart-note">${valid?'Eje completo: 0:00 → '+clock(end)+'. Los huecos son datos ausentes.':key==='strideM'?'No se calcula artificialmente a partir de otros promedios.':'No hay muestras disponibles para esta métrica.'}</p></article>`;}).join(''):'';
  $('#day-context').innerHTML=`${r?'<h3 class="context-title">Velocidades reales de la cinta</h3><p>'+esc(r.treadmill?.notes||'No informadas')+'</p>':''}<h3 class="context-title">Contexto y sensaciones</h3><p>${esc(w.context?.temperature||'Temperatura no informada')} · ${esc(w.context?.sensations||'Sensaciones no informadas')}</p><p class="muted">${esc(w.context?.notes||'')}</p>${w.session?.startLocal?'<p>Sesión completa: '+esc(w.session.startLocal)+' → '+esc(w.session.endLocal)+'</p>':''}`;
 }
 async function init(){try{const res=await fetch('./data/workouts.json',{cache:'no-store'});if(!res.ok)throw new Error('No se pudo leer el historial.');data=validate(await res.json());workouts=[...data.workouts].sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));runs=workouts.filter(w=>w.running);$('#sessions').textContent=workouts.length;$('#distance').textContent=num(runs.reduce((s,w)=>s+w.running.distanceKm,0),2);const p=runs.map(w=>pace(w.running)).filter(finite);$('#pace').textContent=p.length?clock(Math.min(...p)):'—';$('#updated').textContent='Actualizado '+shortDate(data.updatedAt);$('#status').textContent='';$('#status').hidden=true;evolution();durations();comparison();const ref=data.reference;$('#reference-content').innerHTML=`<p>Referencia: ${esc(shortDate(workouts.find(w=>w.id===ref.workoutId)?.date??''))}. Al decir “cumplí con las medidas”, se aplican estos parámetros:</p><div class="reference-parts"><span>Inclinación <b>${num(ref.inclinePct)} %</b></span>${ref.segments.map(s=>`<span>Km ${s.toKm} <b>${num(s.speedKmh)} km/h</b></span>`).join('')}</div>`;$('#date-select').innerHTML=[...workouts].reverse().map(w=>`<option value="${esc(w.id)}">${esc(fullDate(w.date))} · ${types[w.type]}${workouts.filter(a=>a.date===w.date).length>1?' · '+esc(w.id):''}</option>`).join('');$('#date-select').addEventListener('change',e=>detail(e.target.value));if(workouts.length)detail(workouts.at(-1).id);document.querySelectorAll('[data-metric]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-metric]').forEach(t=>t.setAttribute('aria-pressed',String(t===b)));evolution(b.dataset.metric);}));}catch(e){$('#status').hidden=false;$('#status').textContent='No pudimos cargar los datos. '+e.message;}}
