@@ -32,16 +32,16 @@
       "id": "2026-10-16-01",
       "date": "2026-10-16",
       "type": "running_gym",
-      "source": "user_report",
+      "source": "tcx",
       "running": {
         "distanceKm": 3.1,
         "durationSec": 1072,
         "elapsedSec": 1072,
-        "distanceSource": "user_report_calibrated_tcx",
-        "heartRateAvg": 173,
+        "distanceSource": "tcx_calibrated",
+        "heartRateAvg": 172.69,
         "heartRateMax": 189,
-        "cadenceAvg": 143,
-        "cadenceApproximate": true,
+        "cadenceAvg": 142.98,
+        "cadenceApproximate": false,
         "strideAvgM": null,
         "treadmill": {
           "inclinePct": 0.5,
@@ -52,7 +52,15 @@
           "notes": "Casi toda la corrida a 10 km/h; final alrededor de 10,8 km/h.",
           "segments": []
         },
-        "samples": []
+        "samples": [],
+        "heartRateAvgSource": "tcx_time_weighted_observed",
+        "cadenceAvgSource": "tcx_time_weighted_observed",
+        "samplesFile": "data/samples/2026-10-16-01.json",
+        "lastRecordedSampleSec": 1071,
+        "tcxSha256": "7fe11c7905d2e63d6cb03eb7e875d3d8918fcd73102db4b6ad87df3a7dd4e7ad",
+        "importWarnings": [
+          "Zancada pendiente: el TCX de Zepp no exporta un campo de longitud de paso verificable."
+        ]
       },
       "session": {
         "totalDurationSec": 5400,
@@ -63,23 +71,23 @@
       "context": {
         "temperature": "Mucho calor en el gimnasio",
         "sensations": "No informadas",
-        "notes": "Datos resumidos por el usuario. TCX pendiente para incorporar curvas."
+        "notes": "Datos resumidos por el usuario. TCX incorporado: curvas de ritmo, FC y cadencia disponibles. Zancada no exportada por Zepp."
       }
     },
     {
       "id": "2026-10-17-01",
       "date": "2026-10-17",
       "type": "running_gym",
-      "source": "user_report",
+      "source": "tcx",
       "running": {
         "distanceKm": 3.16,
         "durationSec": 1048,
         "elapsedSec": 1048,
-        "distanceSource": "user_report_calibrated_tcx",
-        "heartRateAvg": 171,
+        "distanceSource": "tcx_calibrated",
+        "heartRateAvg": 171.18,
         "heartRateMax": 185,
-        "cadenceAvg": 144,
-        "cadenceApproximate": true,
+        "cadenceAvg": 144.28,
+        "cadenceApproximate": false,
         "strideAvgM": null,
         "treadmill": {
           "inclinePct": 0.5,
@@ -106,7 +114,15 @@
             }
           ]
         },
-        "samples": []
+        "samples": [],
+        "heartRateAvgSource": "tcx_time_weighted_observed",
+        "cadenceAvgSource": "tcx_time_weighted_observed",
+        "samplesFile": "data/samples/2026-10-17-01.json",
+        "lastRecordedSampleSec": 1048,
+        "tcxSha256": "aa8dc0e88a1c57a4cbf23975b7bc6ba93192fc7e6b7a465e5d73a170a031b790",
+        "importWarnings": [
+          "Zancada pendiente: el TCX de Zepp no exporta un campo de longitud de paso verificable."
+        ]
       },
       "session": {
         "totalDurationSec": 7200,
@@ -117,7 +133,7 @@
       "context": {
         "temperature": "Gimnasio más fresco que el día anterior",
         "sensations": "Mejores sensaciones",
-        "notes": "Sesión de referencia. Duración total informada: 12:00 a 14:00. TCX pendiente para incorporar curvas."
+        "notes": "Sesión de referencia. Duración total informada: 12:00 a 14:00. TCX incorporado: curvas de ritmo, FC y cadencia disponibles. Zancada no exportada por Zepp."
       }
     }
   ]
