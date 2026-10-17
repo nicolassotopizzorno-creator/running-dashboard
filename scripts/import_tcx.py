@@ -59,6 +59,17 @@ def downsample(points, step=5):
     return kept
 
 
+def observed_average(points, key):
+    """Promedio temporal solo de intervalos observados; no rellenar huecos."""
+    weighted, seconds = 0, 0
+    for a, b in zip(points, points[1:]):
+        delta = b['t']-a['t']
+        if a.get(key) is not None and b.get(key) is not None and 0 < delta <= 15:
+            weighted += (a[key]+b[key])/2*delta
+            seconds += delta
+    return round(weighted/seconds, 2) if seconds else None
+
+
 def parse_tcx(raw, cadence_factor=None):
     # No aceptar DTD/entidades del archivo adjunto.
     if b'<!DOCTYPE' in raw.upper() or b'<!ENTITY' in raw.upper():
@@ -141,12 +152,15 @@ def parse_tcx(raw, cadence_factor=None):
         warnings.append('Cadencia sin convertir: confirmar si el TCX usa pasos o ciclos por minuto.')
     warnings.append('Zancada pendiente: no se deriva de velocidad/cadencia ni se asumen unidades de extensiones.')
     hr_values = [(bpm(l,'AverageHeartRateBpm'),number(l,'TotalTimeSeconds')) for l in laps]
-    average = sum(v*t for v,t in hr_values)/duration if all(v is not None for v,t in hr_values) else None
+    has_hr_summary = all(v is not None for v,t in hr_values)
+    average = sum(v*t for v,t in hr_values)/duration if has_hr_summary else observed_average(samples,'heartRate')
     maxima = [bpm(l,'MaximumHeartRateBpm') for l in laps]
     max_hr = max(maxima) if maxima and all(v is not None for v in maxima) else max((p['heartRate'] for p in samples if p.get('heartRate') is not None),default=None)
     return {'distanceKm':distance,'durationSec':duration,'elapsedSec':elapsed,
             'distanceSource':'tcx_calibrated','heartRateAvg':average,'heartRateMax':max_hr,
-            'cadenceAvg':None,'cadenceApproximate':False,'strideAvgM':None,
+            'heartRateAvgSource':'tcx_lap_summary' if has_hr_summary else 'tcx_time_weighted_observed',
+            'cadenceAvg':observed_average(samples,'cadence'),'cadenceAvgSource':'tcx_time_weighted_observed',
+            'cadenceApproximate':False,'strideAvgM':None,
             'samples':downsample(samples),'lastRecordedSampleSec':actual_last,
             'tcxSha256':hashlib.sha256(raw).hexdigest(),'importWarnings':warnings}
 
@@ -171,6 +185,7 @@ def merge_workout(db, parsed, context, replace=False):
     for key in ('heartRateAvg','heartRateMax','cadenceAvg','strideAvgM'):
         if parsed[key] is None and old_running.get(key) is not None:
             parsed[key] = old_running[key]
+            parsed[key+'Source'] = old_running.get(key+'Source','user_report')
             if key == 'cadenceAvg':
                 parsed['cadenceApproximate'] = old_running.get('cadenceApproximate',False)
     treadmill = context.get('treadmill',old_running.get('treadmill',{}))

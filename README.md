@@ -2,6 +2,8 @@
 
 Dashboard personal mobile-first, sin dependencias ni instalación. HTML, CSS, JS modular y `data/workouts.json` como única fuente de datos. Objetivo: 3 km en 15:00 a 12 km/h sostenidos.
 
+Dashboard: https://nicolassotopizzorno-creator.github.io/running-dashboard/
+
 ## Uso desde el celular
 
 Abrí la URL publicada del dashboard. Para actualizar, adjuntá a ChatGPT el TCX de Zepp y tus comentarios, e indicá este repositorio. Texto sugerido:

@@ -16,6 +16,7 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(r['samples'][-1]['t'],17)
         self.assertEqual(r['samples'][-1]['heartRate'],157)
         self.assertEqual(r['samples'][-1]['cadence'],144)
+        self.assertEqual(r['cadenceAvg'],144)
         self.assertEqual(r['distanceKm'],.055)
         self.assertIsNone(r['strideAvgM'])
     def test_missing_endpoint_is_null_not_extrapolated(self):
