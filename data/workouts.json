@@ -148,13 +148,19 @@
         "cadenceApproximate": false,
         "strideAvgM": null,
         "treadmill": {
-          "inclinePct": null,
-          "speedMinKmh": null,
-          "speedMaxKmh": null,
+          "inclinePct": 0.5,
+          "speedMinKmh": 10.6,
+          "speedMaxKmh": 11.5,
           "averageSpeedKmh": null,
-          "approximate": false,
-          "notes": "Velocidad e inclinación de la cinta no informadas.",
-          "segments": []
+          "approximate": true,
+          "notes": "Inclinación 0,5%. Usuario informó: arrancó a 10,6 km/h hasta 0,5 km; luego 11 km/h durante casi otro medio kilómetro; el último tramo fue a 11,5 km/h. Los límites exactos de los tramos intermedios no quedaron completamente definidos.",
+          "segments": [
+            {
+              "fromKm": 0,
+              "toKm": 0.5,
+              "speedKmh": 10.6
+            }
+          ]
         },
         "samples": [],
         "heartRateAvgSource": "tcx_lap_summary",
@@ -175,7 +181,7 @@
       "context": {
         "temperature": "Mucho calor en el gimnasio",
         "sensations": "No pudo completar los 3 km.",
-        "notes": "Venía sin actividad desde el sábado; hoy martes retomó. El calor fue el principal limitante informado."
+        "notes": "Venía sin actividad desde el sábado; hoy martes retomó. El calor fue el principal limitante informado. Cinta: 0,5% de inclinación; 10,6 km/h hasta 0,5 km, luego 11 km/h durante casi otro medio kilómetro y tramo final a 11,5 km/h."
       }
     }
   ]
