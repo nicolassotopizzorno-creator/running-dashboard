@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-20",
   "goal": {
     "distanceKm": 3,
     "durationSec": 900,
@@ -130,6 +130,52 @@
         "temperature": "Gimnasio más fresco que el día anterior",
         "sensations": "Mejores sensaciones",
         "notes": "Sesión de referencia. Duración total informada: 12:00 a 14:00. TCX incorporado: curvas de ritmo, FC y cadencia disponibles."
+      }
+    },
+    {
+      "id": "2026-10-20-01",
+      "date": "2026-10-20",
+      "type": "running_gym",
+      "source": "tcx",
+      "running": {
+        "distanceKm": 2.5,
+        "durationSec": 799,
+        "elapsedSec": 799,
+        "distanceSource": "tcx_calibrated",
+        "heartRateAvg": 173,
+        "heartRateMax": 190,
+        "cadenceAvg": 144.58,
+        "cadenceApproximate": false,
+        "strideAvgM": null,
+        "treadmill": {
+          "inclinePct": null,
+          "speedMinKmh": null,
+          "speedMaxKmh": null,
+          "averageSpeedKmh": null,
+          "approximate": false,
+          "notes": "Velocidad e inclinación de la cinta no informadas.",
+          "segments": []
+        },
+        "samples": [],
+        "heartRateAvgSource": "tcx_lap_summary",
+        "cadenceAvgSource": "tcx_time_weighted_observed",
+        "samplesFile": "data/samples/2026-10-20-01.json",
+        "lastRecordedSampleSec": 798,
+        "tcxSha256": "d8ea439daa73ac21c73d093fdec5ffbc498fc2a0d56ccc548d9d7b387ccaa34a",
+        "importWarnings": [
+          "El final declarado (799 s) no tiene muestra; se conserva un punto nulo en el extremo."
+        ]
+      },
+      "session": {
+        "totalDurationSec": 5220,
+        "gymDurationSec": null,
+        "startLocal": "20:30",
+        "endLocal": "21:57"
+      },
+      "context": {
+        "temperature": "Mucho calor en el gimnasio",
+        "sensations": "No pudo completar los 3 km.",
+        "notes": "Venía sin actividad desde el sábado; hoy martes retomó. El calor fue el principal limitante informado."
       }
     }
   ]
