@@ -256,15 +256,15 @@
         "importWarnings": []
       },
       "session": {
-        "totalDurationSec": null,
+        "totalDurationSec": 6000,
         "gymDurationSec": null,
         "startLocal": "21:00",
-        "endLocal": null
+        "endLocal": "22:40"
       },
       "context": {
         "temperature": "No informada",
         "sensations": "No informadas",
-        "notes": "Sesión en curso al momento del registro. El usuario avisará la hora de salida del gimnasio. Cinta: 0,5% toda la corrida; km 1 a 10,5 km/h, km 2 a 11 km/h, 2,0–2,5 km a 11,5 km/h y 2,5–3,0 km a 12 km/h. Los 50 m finales no tienen velocidad informada."
+        "notes": "Sesión completa: 21:00–22:40 (1 h 40 min). Cinta: 0,5% toda la corrida; km 1 a 10,5 km/h, km 2 a 11 km/h, 2,0–2,5 km a 11,5 km/h y 2,5–3,0 km a 12 km/h. Los 50 m finales no tienen velocidad informada."
       }
     }
   ]
