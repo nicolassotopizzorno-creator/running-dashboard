@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-27",
   "goal": {
     "distanceKm": 3,
     "durationSec": 900,
@@ -182,6 +182,68 @@
         "temperature": "Mucho calor en el gimnasio",
         "sensations": "No pudo completar los 3 km.",
         "notes": "Venía sin actividad desde el sábado; hoy martes retomó. El calor fue el principal limitante informado. Cinta: 0,5% de inclinación; 10,6 km/h hasta 0,5 km, luego 11 km/h durante casi otro medio kilómetro y tramo final a 11,5 km/h."
+      }
+    },
+    {
+      "id": "2026-10-23-01",
+      "date": "2026-10-23",
+      "type": "gym",
+      "source": "user_report",
+      "running": null,
+      "session": {
+        "totalDurationSec": 5400,
+        "gymDurationSec": null,
+        "startLocal": "19:30",
+        "endLocal": "21:00"
+      },
+      "context": {
+        "temperature": "No informada",
+        "sensations": "No informadas",
+        "notes": "No corrió. Hizo 4 km en bici fija durante la sesión de gimnasio."
+      }
+    },
+    {
+      "id": "2026-10-27-01",
+      "date": "2026-10-27",
+      "type": "running_gym",
+      "source": "tcx",
+      "running": {
+        "distanceKm": 3.05,
+        "durationSec": 998,
+        "elapsedSec": 998,
+        "distanceSource": "tcx_calibrated",
+        "heartRateAvg": 172,
+        "heartRateMax": 191,
+        "cadenceAvg": 143.78,
+        "cadenceApproximate": false,
+        "strideAvgM": null,
+        "treadmill": {
+          "inclinePct": null,
+          "speedMinKmh": null,
+          "speedMaxKmh": null,
+          "averageSpeedKmh": null,
+          "approximate": false,
+          "notes": "Velocidad e inclinación de la cinta aún no informadas.",
+          "segments": []
+        },
+        "samples": [],
+        "heartRateAvgSource": "tcx_lap_summary",
+        "cadenceAvgSource": "tcx_time_weighted_observed",
+        "samplesFile": "data/samples/2026-10-27-01.json",
+        "lastRecordedSampleSec": 998,
+        "tcxSha256": "5803828f0d454fe2e8802d0ca50245e84166fd104eae4761eccf9b5803135e4a",
+        "importWarnings": []
+      },
+      "session": {
+        "totalDurationSec": null,
+        "gymDurationSec": null,
+        "startLocal": "21:00",
+        "endLocal": null
+      },
+      "context": {
+        "temperature": "No informada",
+        "sensations": "No informadas",
+        "notes": "Sesión en curso al momento del registro. El usuario avisará la hora de salida del gimnasio."
       }
     }
   ]
