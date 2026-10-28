@@ -218,13 +218,34 @@
         "cadenceApproximate": false,
         "strideAvgM": null,
         "treadmill": {
-          "inclinePct": null,
-          "speedMinKmh": null,
-          "speedMaxKmh": null,
+          "inclinePct": 0.5,
+          "speedMinKmh": 10.5,
+          "speedMaxKmh": 12,
           "averageSpeedKmh": null,
           "approximate": false,
-          "notes": "Velocidad e inclinación de la cinta aún no informadas.",
-          "segments": []
+          "notes": "Inclinación 0,5% durante toda la corrida. Km 1 a 10,5 km/h; km 2 a 11 km/h; de 2,0 a 2,5 km a 11,5 km/h; de 2,5 a 3,0 km a 12 km/h. Velocidad de los 50 m finales no informada.",
+          "segments": [
+            {
+              "fromKm": 0,
+              "toKm": 1,
+              "speedKmh": 10.5
+            },
+            {
+              "fromKm": 1,
+              "toKm": 2,
+              "speedKmh": 11
+            },
+            {
+              "fromKm": 2,
+              "toKm": 2.5,
+              "speedKmh": 11.5
+            },
+            {
+              "fromKm": 2.5,
+              "toKm": 3,
+              "speedKmh": 12
+            }
+          ]
         },
         "samples": [],
         "heartRateAvgSource": "tcx_lap_summary",
@@ -243,7 +264,7 @@
       "context": {
         "temperature": "No informada",
         "sensations": "No informadas",
-        "notes": "Sesión en curso al momento del registro. El usuario avisará la hora de salida del gimnasio."
+        "notes": "Sesión en curso al momento del registro. El usuario avisará la hora de salida del gimnasio. Cinta: 0,5% toda la corrida; km 1 a 10,5 km/h, km 2 a 11 km/h, 2,0–2,5 km a 11,5 km/h y 2,5–3,0 km a 12 km/h. Los 50 m finales no tienen velocidad informada."
       }
     }
   ]
