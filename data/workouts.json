@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-27",
+  "updatedAt": "2026-11-05",
   "goal": {
     "distanceKm": 3,
     "durationSec": 900,
@@ -265,6 +265,53 @@
         "temperature": "No informada",
         "sensations": "Intentó mejorar la técnica ampliando ligeramente la zancada y empujando más con el pie hacia atrás.",
         "notes": "Sesión completa: 21:00–22:40 (1 h 40 min). Cinta: 0,5% toda la corrida; km 1 a 10,5 km/h, km 2 a 11 km/h, 2,0–2,5 km a 11,5 km/h y 2,5–3,0 km a 12 km/h. Los 50 m finales no tienen velocidad informada. Técnica: foco consciente en mayor impulso hacia atrás y zancada algo más amplia; usar este dato para comparar mecánica en futuras sesiones, sin asumir que una zancada más larga es mejor por sí sola."
+      }
+    },
+    {
+      "id": "2026-11-05-01",
+      "date": "2026-11-05",
+      "type": "running_gym",
+      "source": "tcx",
+      "running": {
+        "distanceKm": 2.46,
+        "durationSec": 740,
+        "elapsedSec": 740,
+        "distanceSource": "tcx_calibrated",
+        "heartRateAvg": 139,
+        "heartRateMax": 152,
+        "cadenceAvg": 145.19,
+        "cadenceApproximate": false,
+        "strideAvgM": null,
+        "treadmill": {
+          "inclinePct": null,
+          "speedMinKmh": null,
+          "speedMaxKmh": null,
+          "averageSpeedKmh": null,
+          "approximate": false,
+          "notes": "Velocidad e inclinación de la cinta no informadas.",
+          "segments": []
+        },
+        "samples": [],
+        "heartRateAvgSource": "tcx_lap_summary",
+        "cadenceAvgSource": "tcx_time_weighted_observed",
+        "samplesFile": "data/samples/2026-11-05-01.json",
+        "lastRecordedSampleSec": 739,
+        "tcxSha256": "abc47bf439528bde84a4cc904a962479dd5c387eeeedaa9294da033d93518115",
+        "importWarnings": [
+          "El final declarado (740 s) no tiene muestra; se conserva un punto nulo en el extremo.",
+          "La FC del TCX es inusualmente baja frente a sesiones previas de ritmo similar; interpretar con cautela por posible sublectura del sensor."
+        ]
+      },
+      "session": {
+        "totalDurationSec": 5400,
+        "gymDurationSec": null,
+        "startLocal": "20:30",
+        "endLocal": "22:00"
+      },
+      "context": {
+        "temperature": "Mucho calor en el gimnasio",
+        "sensations": "No informadas",
+        "notes": "Venía sin entrenar desde el viernes 30/10. Sesión completa 20:30–22:00. TCX incorporado con 2,46 km de corrida; velocidad e inclinación de cinta pendientes de informar."
       }
     }
   ]
